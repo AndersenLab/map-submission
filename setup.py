@@ -13,5 +13,5 @@ setup(name='cli-name',
       [console_scripts]
       ms = ms.ms:main
       """,
-      install_requires=["docopt", "clint"],
+      install_requires=["docopt", "clint", "slugify"],
       zip_safe=False)
