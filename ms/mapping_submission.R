@@ -1,7 +1,7 @@
 #!/usr/bin/Rscript --vanilla
 #SBATCH -J {v}
-#SBATCH -e /lscr2/andersenlab/{username}/mapping/logs/{v_slug}.err
-#SBATCH -o /lscr2/andersenlab/{username}/mapping/logs/{v_slug}.out
+#SBATCH -e {prefix}logs/{v_slug}.err
+#SBATCH -o {prefix}logs/{v_slug}.out
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4096
 #SBATCH --ntasks=1
@@ -10,12 +10,12 @@
 
 library(readr)
 library(cegwas)
+library(dplyr)
 
-
-file_prefix <- "/lscr2/andersenlab/dec211/mapping"
-input_data <- paste0(file_prefix, "/phenotypes/", "{v_slug}", ".tsv")
-output_tsv <- paste0(file_prefix, "/mappings_tsv/", "{v_slug}", ".tsv")
-output_rdata <- paste0(file_prefix, "/mappings_rdata/", "{v_slug}", ".rdata")
+file_prefix <- "{prefix}"
+input_data <- paste0(file_prefix, "phenotypes/", "{v_slug}", ".tsv")
+output_tsv <- paste0(file_prefix, "mappings_tsv/", "{v_slug}", ".tsv")
+output_rdata <- paste0(file_prefix, "mappings_rdata/", "{v_slug}", ".rdata")
 
 df <- readr::read_tsv("{file_path}")
 
