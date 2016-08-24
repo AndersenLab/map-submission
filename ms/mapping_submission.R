@@ -11,13 +11,14 @@
 library(readr)
 library(cegwas)
 library(dplyr)
+library(data.table)
 
 file_prefix <- "{prefix}"
 input_data <- paste0(file_prefix, "phenotypes/", "{v_slug}", ".tsv")
 output_tsv <- paste0(file_prefix, "mappings_tsv/", "{v_slug}", ".tsv")
 output_rdata <- paste0(file_prefix, "mappings_rdata/", "{v_slug}", ".rdata")
 
-df <- readr::read_tsv("{file_path}")
+df <- dplyr::tbl_df(data.table::fread("{file_path}"))
 
 
 pheno <- process_pheno(df)

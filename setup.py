@@ -1,7 +1,7 @@
 from setuptools import setup
 import glob
 
-setup(name='cli-name',
+setup(name='map-submission',
       version='0.0.1',
       packages=['ms'],
       description='Skeleton commandline python project',
